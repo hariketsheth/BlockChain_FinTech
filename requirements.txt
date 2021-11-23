@@ -1,0 +1,17 @@
+certifi==2019.11.28
+chardet==3.0.4
+Click==7.0
+dnspython==1.16.0
+Flask==1.1.1
+gunicorn==20.0.4
+idna==2.8
+itsdangerous==1.1.0
+Jinja2==2.11.1
+MarkupSafe==1.1.1
+passlib==1.7.2
+pygal==2.4.0
+pymongo==3.10.1
+python-firebase==1.2
+requests==2.22.0
+urllib3==1.25.8
+Werkzeug==1.0.0
