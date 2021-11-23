@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Kode is a Premium Bootstrap Admin Template, It's responsive, clean coded and mobile friendly">
+    <meta name="keywords" content="bootstrap, admin, dashboard, flat admin template, responsive," />
+    <title>Inverstor Marketplace</title>
+
+    <link href="/static/dashboard/css/root.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="loading"><img src="/static/dashboard/img/loading.gif" alt="loading-img"></div>
+    <div id="top" class="clearfix">
+
+        <div class="applogo">
+            <a href="/" class="logo">fintact</a>
+        </div>
+
+        <a href="#" class="sidebar-open-button"><i class="fa fa-bars"></i></a>
+        <a href="#" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
+
+        <ul class="top-right">
+
+            <li class="dropdown link">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><b>{{name}}</b><span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
+                    <li><a href="/logout"><i class="fa falist fa-power-off"></i> Logout</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="sidebar clearfix">
+
+        <ul class="sidebar-panel nav">
+            <li class="sidetitle">GO TO</li>
+            <li><a href="/capital"><span class="icon color5"><i class="fa fa-usd"></i></span>Invested<span
+                        class="label label-default"></span></a></li>
+            <li><a href="/capital/market"><span class="icon color6"><i class="fa fa-globe"></i></span>Marketplace<span
+                        class="label label-default"></span></a></li>
+        </ul>
+
+    </div>
+
+    <div class="content">
+
+        <div class="container-widget">
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class="panel panel-widget">
+                        <div class="panel-title">
+                            LATEST ENTRIES <span class="label label-warning">{{data|length}}</span>
+                        </div>
+
+                        <div class="panel-search">
+                            <form>
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <i class="fa fa-search icon"></i>
+                            </form>
+                        </div>
+                        <div class="panel-body table-responsive">
+
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <td>CE</td>
+                                        <td>SME</td>
+                                        <td>Amount</td>
+                                        <td>Payment date</td>
+                                        <td>Delivery date</td>
+                                        <td>Insurance</td>
+                                        <!-- <td>Interest</td> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for i in data %}
+                                    {% if data[i].approved=='yes' %}
+                                    <tr>
+                                        <td>{{data[i].cename}}</td>
+                                        <td>{{smemap[data[i].sme]}}</td>
+                                        <td>{{data[i].amount}}</td>
+                                        <td>{{data[i].payment_date}}</td>
+                                        <td>{{data[i].delivery_date}}</td>
+                                        <td>{{data[i].insurance}}</td>
+                                        <!-- <td>{{data[i].interest}}</td> -->
+                                        <td><a href='/capital/view/{{i}}'>View</a></td>
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row" style="visibility: hidden;height:max-content">
+                <h2>Test</h2>
+                <h2>Test</h2>
+                <h2>Test</h2>
+                <h2>Test</h2>
+                <h2>Test</h2>
+                <h2>Test</h2>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script type="text/javascript" src="/static/dashboard/js/jquery.min.js"></script>
+
+
+    <script src="/static/dashboard/js/bootstrap/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/plugins.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-select/bootstrap-select.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+
+
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-wysihtml5/wysihtml5-0.3.0.min.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+
+
+
+
+
+    <script src="/static/dashboard/js/datatables/datatables.min.js"></script>
+
+
+    <script src="/static/dashboard/js/sweet-alert/sweet-alert.min.js"></script>
+
+    <script src="/static/dashboard/js/kode-alert/main.js"></script>
+
+
+    <script type="text/javascript" src="/static/dashboard/js/jquery-ui/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/moment/moment.min.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/full-calendar/fullcalendar.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/date-range-picker/daterangepicker.js"></script>
+
+
+</body>
+
+</html>

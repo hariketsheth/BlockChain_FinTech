@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SCF Solution">
+    <meta name="keywords" content="bootstrap, admin, dashboard, flat admin template, responsive," />
+    <title>Invoice </title>
+    <link href="/static/dashboard/css/root.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="loading"><img src="/static/dashboard/img/loading.gif" alt="loading-img"></div>
+
+    <div id="top" class="clearfix">
+
+        <div class="applogo">
+            <a href="/" class="logo">fintact</a>
+        </div>
+        <a href="#" class="sidebar-open-button"><i class="fa fa-bars"></i></a>
+        <a href="#" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
+
+        <ul class="top-right">
+
+            <li class="dropdown link">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><b>{{ name }}</b><span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
+                    <li><a href="/logout"><i class="fa falist fa-power-off"></i> Logout</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+    </div>
+    <div class="sidebar clearfix">
+
+        <ul class="sidebar-panel nav">
+            <li class="sidetitle">MAIN</li>
+            <li><a href="/sme"><span class="icon color5"><i class="fa fa-home"></i></span>Dashboard<span
+                        class="label label-default"></span></a></li>
+            <li><a href="/sme/decision"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Accept
+                    Invoices<span class="label label-default"></span></a></li>
+            <li><a href="/sme/request"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Request
+                    Enterprise<span class="label label-default"></span></a></li>
+        </ul>
+
+    </div>
+    <div class="content">
+
+
+        <div class="container-padding">
+
+            <div class="invoice row">
+                <div class="invoicename">INVOICE</div>
+                <div class="logo">
+                    <h1>{{data.cename}}</h1>
+                </div>
+
+                <div class="line row">
+                    <div class="col-md-6 col-xs-6 padding-0 text-left">
+                        <h4>DUE DATE</h4>
+                        <h2>{{data.delivery_date}}</h2>
+                    </div>
+                    <div class="col-md-6 col-xs-6 padding-0 text-right">
+                        <h4>INVOICE ID</h4>
+                        <h2>{{id}}</h2>
+                    </div>
+                </div>
+
+                <div class="line row">
+                    <div class="col-md-6 col-xs-6 padding-0 text-left">
+                        <h4>PREPARED FOR</h4>
+                        <h2>{{sme_name}}</h2>
+                    </div>
+                    <div class="col-md-6 col-xs-6 padding-0 text-right">
+                        <h4>PROJECT</h4>
+                        <h2>Industry</h2>
+                    </div>
+                </div>
+
+                <table class="table">
+                    <thead class="title">
+                        <tr>
+                            <td>TASK DESCRIPTION</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{data.quote}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right"></td>
+                            <td class="text-right">TOTAL<h4 class="total">₹ {{data.amount}}</h4>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="signature">
+                    <p><img src="/static/dashboard/img/signature.png" alt="img"></p>
+                    <p><b>{{data.ce}}</b></p>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="/static/dashboard/js/jquery.min.js"></script>
+    <script src="/static/dashboard/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/dashboard/js/plugins.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SCF solutions">
+    <meta name="keywords" content="bootstrap, admin, dashboard, flat admin template, responsive," />
+    <title>Create Order</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/dashboard/css/root.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="loading"><img src="/static/dashboard/img/loading.gif" alt="loading-img"></div>
+
+    <div id="top" class="clearfix">
+
+        <div class="applogo">
+            <a href="/" class="logo">fintact</a>
+        </div>
+
+        <a href="#" class="sidebar-open-button"><i class="fa fa-bars"></i></a>
+        <a href="#" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
+
+
+        <ul class="top-right">
+
+            <li class="dropdown link">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><b>{{name}}</b><span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
+                    <li><a href="/logout"><i class="fa falist fa-power-off"></i> Logout</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+
+    </div>
+
+    <div class="sidebar clearfix">
+
+        <ul class="sidebar-panel nav">
+            <li class="sidetitle">GO TO</li>
+            <li><a href="/ce"><span class="icon color5"><i class="fa fa-home"></i></span>Dashboard<span
+                        class="label label-default"></span></a></li>
+            <li><a href="/ce/create"><span class="icon color5"><i class="fa fa-usd"></i></span>Create Order<span
+                        class="label label-default"></span></a></li>
+            <li><a href="/ce/decision"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Confirm SME
+                    Order<span class="label label-default"></span></a></li>
+            <li><a href="/ce/accept"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Accept SME
+                    Requests<span class="label label-default"></span></a></li>
+        </ul>
+
+
+    </div>
+
+    <div class="content">
+        <div class="container-padding">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+
+                        <div class="panel-title">
+                            Create Order
+                        </div>
+
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label form-label">Select SME</label>
+                                    <div class="col-sm-10">
+                                        <select class="selectpicker" id="sme">
+                                            {% for i in smes %}
+                                            <option value="{{i}}">{{smes[i].name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputAmount" class="col-sm-2 control-label form-label">Order
+                                        Amount</label>
+                                    <div class="col-sm-10">
+                                        <label class="sr-only" for="exampleInputAmount">Amount (in INR)</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                            <input type="number" class="form-control" id="Amount" placeholder="Amount">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label form-label">Quotation</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" rows="5" id="Quote"
+                                            placeholder="Type your message..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label form-label">Delievery Date</label>
+                                    <div class="col-sm-4">
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <div class="input-prepend input-group">
+                                                    <span class="add-on input-group-addon"><i
+                                                            class="fa fa-calendar"></i></span>
+                                                    <input type="text" id="date-picker" class="form-control"
+                                                        value="02/09/2020" name="Delievery" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label form-label">Date of Payment</label>
+                                    <div class="col-sm-4">
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <div class="input-prepend input-group">
+                                                    <span class="add-on input-group-addon"><i
+                                                            class="fa fa-calendar"></i></span>
+                                                    <input type="text" id="payment-picker" class="form-control"
+                                                        value="03/09/2020" name="Payment" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label form-label"></label>
+                                    <div class="col-sm-10">
+                                        <button class="btn btn-default" id="Order">Create Order</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="visibility: hidden;height:max-content">
+                <h2>Test</h2>
+                <h4>Test</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="/static/dashboard/js/jquery.min.js"></script>
+
+    <script src="/static/dashboard/js/bootstrap/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/plugins.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-select/bootstrap-select.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+
+
+    <script type="text/javascript" src="/static/dashboard/js/moment/moment.min.js"></script>
+
+
+    <script type="text/javascript" src="/static/dashboard/js/date-range-picker/daterangepicker.js"></script>
+
+
+    <!-- Basic Date Range Picker -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#date-range-picker').daterangepicker(null, function (start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#date-picker').daterangepicker({ singleDatePicker: true }, function (start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+            });
+
+            $('#payment-picker').daterangepicker({ singleDatePicker: true }, function (start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+            });
+        });
+    </script>
+
+    <script>
+
+        $(document).ready(
+
+            function () {
+
+
+
+                $('#Order').on('click', function (event) {
+
+                    $.ajax({
+                        data: {
+                            SME: $("#sme").val(),
+                            Amount: $("#Amount").val(),
+                            Quote: $("#Quote").val(),
+                            Payment: $('input[name="Payment"]').val(),
+                            Delievery: $('input[name="Delievery"]').val()
+                        },
+                        type: "POST",
+                        url: '/create_order'
+                    })
+                        .done(function (data) {
+                            if (data.error) {
+                                alert("Error")
+                            }
+                            else {
+                                $(location).attr('href', '/ce')
+
+                                // alert("Success");
+                            }
+                        });
+
+                    event.preventDefault();
+
+                });
+
+            });
+    </script>
+
+</body>
+
+</html>

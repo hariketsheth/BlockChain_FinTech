@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SME Approve Invoice">
+    <meta name="keywords" content="bootstrap, admin, dashboard, flat admin template, responsive," />
+    <title> Approve Invoice | SME</title>
+
+    <link href="/static/dashboard/css/root.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="loading"><img src="/static/dashboard/img/loading.gif" alt="loading-img"></div>
+
+    <div id="top" class="clearfix">
+
+
+        <div class="applogo">
+            <a href="/" class="logo">fintact</a>
+        </div>
+        <a href="#" class="sidebar-open-button"><i class="fa fa-bars"></i></a>
+        <a href="#" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
+        <ul class="top-right">
+            <li class="dropdown link">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><b>{{ name }}</b><span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
+                    <li><a href="/logout"><i class="fa falist fa-power-off"></i> Logout</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="sidebar clearfix">
+
+        <ul class="sidebar-panel nav">
+            <li class="sidetitle">MAIN</li>
+            <li><a href="/sme"><span class="icon color5"><i class="fa fa-home"></i></span>Dashboard<span
+                        class="label label-default"></span></a></li>
+            <li><a href="/sme/decision"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Accept
+                    Invoices<span class="label label-default"></span></a></li>
+            <li><a href="/sme/request"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Request
+                    Enterprise<span class="label label-default"></span></a></li>
+        </ul>
+
+
+
+
+
+    </div>
+
+    <div class="content">
+        <div class="container-widget">
+
+            <div class="row">
+
+                <div class="col-md-12 col-lg-12">
+                    <div class="panel panel-widget">
+                        <div class="panel-title">
+                            LATEST ORDERS <span class="label label-warning">{{data|length}}</span>
+                        </div>
+
+                        <div class="panel-search">
+                            <form>
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <i class="fa fa-search icon"></i>
+                            </form>
+                        </div>
+
+
+                        <div class="panel-body table-responsive">
+
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <td>Invoice</td>
+                                        <td>Buyer</td>
+                                        <td>Quotation</td>
+                                        <td>Amount</td>
+                                        <td>Delievery Date</td>
+                                        <td>Payment Date</td>
+                                        <td>Working Capital</td>
+                                        <td>Working Capital Deadline</td>
+                                        <td colspan="2" style="text-align: center;">Status</td>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in data %}
+                                    <tr>
+                                        <td><a href='/sme/invoice/{{i}}'>View</a></td>
+                                        <td id="Buyer">{{data[i].cename}}</td>
+                                        <td id="Quotation">{{data[i].quote}}</td>
+                                        <td id="Amount">{{data[i].amount}}</td>
+                                        <td>{{data[i].delivery_date}}</td>
+                                        <td>{{data[i].payment_date}}</td>
+                                        <td><input type="number" id="{{i}}wc" /></td>
+                                        <td>
+                                            <div class="input-prepend input-group">
+                                                <span class="add-on input-group-addon"><i
+                                                        class="fa fa-calendar"></i></span>
+                                                <input type="text" id="{{i}}dp" class="form-control" value="03/09/2020"
+                                                    name="Payment" />
+                                            </div>
+                                        </td>
+                                        <td><button class="btn btn-default" id="{{i}}acc">Confirm</button></td>
+                                        <td><button class="btn btn-danger" id="{{i}}rej">Decline</button></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="visibility: hidden;height:max-content">
+                <h2>Test</h2>
+
+                <h2>Test</h2>
+                <h2>Test</h2>
+                <h2>Test</h2>
+                <h2>Test</h2>
+                <h2>Test</h2>
+                <h2>Test</h2>
+                <h6>Test</h2>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="/static/dashboard/js/jquery.min.js"></script>
+    <script src="/static/dashboard/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/dashboard/js/plugins.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-select/bootstrap-select.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-wysihtml5/wysihtml5-0.3.0.min.js"></script>
+    <script type="text/javascript" src="/static/dashboard/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+
+    <script src="/static/dashboard/js/datatables/datatables.min.js"></script>
+
+
+    <script src="/static/dashboard/js/sweet-alert/sweet-alert.min.js"></script>
+
+
+    <script src="/static/dashboard/js/kode-alert/main.js"></script>
+
+
+    <script type="text/javascript" src="/static/dashboard/js/jquery-ui/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/moment/moment.min.js"></script>
+    <script type="text/javascript" src="/static/dashboard/js/full-calendar/fullcalendar.js"></script>
+
+    <script type="text/javascript" src="/static/dashboard/js/date-range-picker/daterangepicker.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {% for i in data %}
+            $('#{{i}}dp').daterangepicker({ singleDatePicker: true }, function (start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+            });
+            {% endfor %}
+
+        });
+    </script>
+
+    <script>
+
+        $(document).ready(
+
+            function () {
+                {% for i in data %}
+                $('#{{i}}acc').on('click', function (event) {
+
+                    $.ajax({
+                        data: {
+                            HashCode: "{{i}}",
+                            WorkingCapital: $("#{{i}}wc").val(),
+                            CapitalDeadline: $('#{{i}}dp').val()
+
+                        },
+                        type: "POST",
+                        url: '/sme/approve'
+                    })
+                        .done(function (data) {
+                            if (data.error) {
+                                alert("Error")
+                            }
+                            else {
+                                $(location).attr('href', '/sme/decision')
+                            }
+                        });
+
+                    event.preventDefault();
+
+                });
+
+                $('#{{i}}rej').on('click', function (event) {
+
+                    $.ajax({
+                        data: {
+                            HashCode: "{{i}}",
+                        },//$('').text()
+                        type: "POST",
+                        url: '/sme/reject'
+                    })
+                        .done(function (data) {
+                            if (data.error) {
+                                alert("Error")
+                            }
+                            else {
+                                $(location).attr('href', '/sme/decision')
+                            }
+                        });
+
+                    event.preventDefault();
+
+                });
+                {% endfor %}
+            });
+    </script>
+
+</body>
+
+</html>
