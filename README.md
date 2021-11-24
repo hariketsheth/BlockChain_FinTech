@@ -17,6 +17,7 @@
 3. **Immutable Log:** We have an immutable ledger of transactions and invoices thanks to blockchain and smart contracts, which instils confidence and creditability in our consumers.
 4. **Escrow:** To enable hassle-free escrow transactions for our consumers, a specialised wallet and token system was established utilising smart contracts, with us - the product developers - acting as the banking.
 
+<br>
 
 ## Possible Solution
 - Our answer was to develop a product based on Smart Contracts (Blockchain). We wanted to bring buyers, sellers, and investors together in one spot. 
@@ -25,3 +26,12 @@
 - The seller can determine the buyer's requirements and, based on that, determine the amount of working capital and the deadline for working capital.
 - The buyer can set the percentage of insurance that will be guaranteed by their side in the event of a sellar default.
 - The contract, along with the preceding statistical data of the buyer and seller, will be available to investors after final clearance by the buyer's side.
+
+## Screenshots (Implementation)
+![image](https://user-images.githubusercontent.com/72455881/143200951-7a44ed75-4f9b-4585-9f49-43c4211e0b47.png)
+
+![image](https://user-images.githubusercontent.com/72455881/143210758-fad86562-82c4-474e-a717-fe0e97a39292.png)
+
+
+![image](https://user-images.githubusercontent.com/72455881/143210597-fb7d4b24-19b0-4722-8aea-5c5dd719999a.png)
+
