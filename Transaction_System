@@ -1,0 +1,72 @@
+import hashlib
+import time
+import json
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization, hashes
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+
+class Transaction:
+    def __init__(self, sender, recipient, amount):
+        self.sender = sender
+        self.recipient = recipient
+        self.amount = amount
+        self.timestamp = int(time.time())
+
+    def to_dict(self):
+        return {
+            "sender": self.sender,
+            "recipient": self.recipient,
+            "amount": self.amount,
+            "timestamp": self.timestamp,
+        }
+
+    def sign_transaction(self, private_key):
+        signer = private_key.signer(padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.MAX_LENGTH), hashes.SHA256())
+        data = json.dumps(self.to_dict(), sort_keys=True)
+        signer.update(data.encode())
+        return signer.finalize()
+
+class Wallet:
+    def __init__(self):
+        self.private_key = rsa.generate_private_key(
+            public_exponent=65537,
+            key_size=2048,
+            backend=default_backend()
+        )
+        self.public_key = self.private_key.public_key()
+
+    def get_balance(self, blockchain):
+        balance = 0
+        for block in blockchain.chain:
+            for tx in block.data:
+                if tx.sender == self.public_key:
+                    balance -= tx.amount
+                if tx.recipient == self.public_key:
+                    balance += tx.amount
+        return balance
+
+def main():
+    blockchain = Blockchain()
+
+    # Create two wallets
+    wallet1 = Wallet()
+    wallet2 = Wallet()
+
+    # Wallet 1 sends 10 coins to Wallet 2
+    transaction1 = Transaction(wallet1.public_key, wallet2.public_key, 10)
+    transaction1.signature = transaction1.sign_transaction(wallet1.private_key)
+
+    # Add transactions to a block and mine it
+    block1 = Block(1, blockchain.get_latest_block().hash, int(time.time()), [transaction1])
+    blockchain.add_block(block1)
+
+    # Wallet 1 checks its balance
+    balance_wallet1 = wallet1.get_balance(blockchain)
+    print(f"Wallet 1 Balance: {balance_wallet1}")
+
+    # Wallet 2 checks its balance
+    balance_wallet2 = wallet2.get_balance(blockchain)
+    print(f"Wallet 2 Balance: {balance_wallet2}")
+
+if __name__ == "__main__":
+    main()
